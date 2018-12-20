@@ -1377,46 +1377,6 @@ if ($extension->getVersion()=='1.0.2') {
             $this->calls[] = (object) compact('start', 'time', 'name', 'arguments', 'result');
             return $result;
         }
-        public function get( $key, $cache_cb = null, &$cas_token = null, &$udf_flags = null ) {
-            if (!$this->logging) return parent::get($key,$cache_cb,$cas_token,$udf_flags);
-            $start = microtime(true);
-            $name = 'get';
-            $arguments = array($key,$cache_cb,$cas_token,$udf_flags);
-            $result = parent::get($key,$cache_cb,$cas_token,$udf_flags);
-            $time = microtime(true) - $start;
-            $this->calls[] = (object) compact('start', 'time', 'name', 'arguments', 'result');
-            return $result;
-        }
-        public function getByKey( $server_key, $key, $cache_cb = null, &$cas_token = null, &$udf_flags = null ) {
-            if (!$this->logging) return parent::getByKey($server_key,$key,$cache_cb,$cas_token,$udf_flags);
-            $start = microtime(true);
-            $name = 'getByKey';
-            $arguments = array($server_key,$key,$cache_cb,$cas_token,$udf_flags);
-            $result = parent::getByKey($server_key,$key,$cache_cb,$cas_token,$udf_flags);
-            $time = microtime(true) - $start;
-            $this->calls[] = (object) compact('start', 'time', 'name', 'arguments', 'result');
-            return $result;
-        }
-        public function getMulti( array $keys, &$cas_tokens = null, $flags = null, &$udf_flags = null ) {
-            if (!$this->logging) return parent::getMulti($keys,$cas_tokens,$flags,$udf_flags);
-            $start = microtime(true);
-            $name = 'getMulti';
-            $arguments = array($keys,$cas_tokens,$flags,$udf_flags);
-            $result = parent::getMulti($keys,$cas_tokens,$flags,$udf_flags);
-            $time = microtime(true) - $start;
-            $this->calls[] = (object) compact('start', 'time', 'name', 'arguments', 'result');
-            return $result;
-        }
-        public function getMultiByKey( $server_key, array $keys, &$cas_tokens = null, $flags = null, &$udf_flags = null ) {
-            if (!$this->logging) return parent::getMultiByKey($server_key,$keys,$cas_tokens,$flags,$udf_flags);
-            $start = microtime(true);
-            $name = 'getMultiByKey';
-            $arguments = array($server_key,$keys,$cas_tokens,$flags,$udf_flags);
-            $result = parent::getMultiByKey($server_key,$keys,$cas_tokens,$flags,$udf_flags);
-            $time = microtime(true) - $start;
-            $this->calls[] = (object) compact('start', 'time', 'name', 'arguments', 'result');
-            return $result;
-        }
         public function getDelayed( array $keys, $with_cas = null, $value_cb = null ) {
             if (!$this->logging) return parent::getDelayed($keys,$with_cas,$value_cb);
             $start = microtime(true);

@@ -95,7 +95,6 @@ class LswMemcacheExtension extends Extension
             $client = new Reference(sprintf('memcache.%s', $cache['client']));
             foreach ($cache['entity_managers'] as $em) {
                 $def = new Definition($container->getParameter('memcache.doctrine_cache.class'));
-                $def->setScope(ContainerInterface::SCOPE_CONTAINER);
                 $def->addMethodCall('setMemcached', array($client));
                 if ($cache['prefix']) {
                     $def->addMethodCall('setPrefix', array($cache['prefix']));
@@ -104,7 +103,6 @@ class LswMemcacheExtension extends Extension
             }
             foreach ($cache['document_managers'] as $dm) {
                 $def = new Definition($container->getParameter('memcache.doctrine_cache.class'));
-                $def->setScope(ContainerInterface::SCOPE_CONTAINER);
                 $def->addMethodCall('setMemcached', array($client));
                 if ($cache['prefix']) {
                     $def->addMethodCall('setPrefix', array($cache['prefix']));

@@ -141,10 +141,6 @@ if ($extension->getVersion()=='1.0.2') {
     }
 } else if ($extension->getVersion()=='2.2.0') {
     interface MemcacheInterface {
-        public function get( $key, $cache_cb = null, &$cas_token = null, &$udf_flags = null );
-        public function getByKey( $server_key, $key, $cache_cb = null, &$cas_token = null, &$udf_flags = null );
-        public function getMulti( array $keys, &$cas_tokens = null, $flags = null, &$udf_flags = null );
-        public function getMultiByKey( $server_key, array $keys, &$cas_tokens = null, $flags = null, &$udf_flags = null );
         public function getDelayed( array $keys, $with_cas = null, $value_cb = null );
         public function getDelayedByKey( $server_key, array $keys, $with_cas = null, $value_cb = null );
         public function fetch( );
